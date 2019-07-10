@@ -34,7 +34,7 @@ public class TCompanyLyb implements Serializable {
     private Integer id;
 
     /**
-     * 父id
+     * 父id1
      */
     private Integer parentId;
 
