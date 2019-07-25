@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import ims.pr.utils.ResponseBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Slf4j
+@Component
 public class AuthInterceptor implements HandlerInterceptor {
 
 

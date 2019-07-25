@@ -1,6 +1,6 @@
 package ims.pr.repository;
 
-import ims.pr.pojo.Company;
+import ims.pr.pojo.ReviewProduct;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @create 2019-04-08 16:19
  */
 
-public interface CompanyRepo extends JpaRepository<Company, Integer> {
+public interface ReviewProductRepo extends JpaRepository<ReviewProduct, Integer> {
 }

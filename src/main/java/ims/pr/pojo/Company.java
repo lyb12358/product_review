@@ -1,11 +1,11 @@
 package ims.pr.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,8 +24,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "t_company_lyb")
 @DynamicInsert
-public class TCompanyLyb implements Serializable {
-    private static final long serialVersionUID = -5513072982392304489L;
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Company implements Serializable {
+    private static final long serialVersionUID = -7604254423496766640L;
     /**
      * 唯一标识
      */
@@ -46,7 +47,7 @@ public class TCompanyLyb implements Serializable {
     /**
      * 组织名称
      */
-    @Column
+
     private String name;
 
     /**
@@ -57,19 +58,19 @@ public class TCompanyLyb implements Serializable {
     /**
      * 状态（1正常）
      */
-    @Column
+
     private Integer status;
 
     /**
      * 级别
      */
-    @Column
+
     private Integer depth;
 
     /**
      * 节点图标
      */
-    @Column
+
     private String icon;
 
     /**

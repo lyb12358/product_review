@@ -46,7 +46,10 @@ public class GlobalControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public @ResponseBody
     ResponseBean globalException(HttpServletRequest request, Throwable ex) {
+        log.warn(ex.getMessage());
+        ex.printStackTrace();
         return new ResponseBean(getStatus(request).value(), ex.getMessage(), null);
+
     }
 
     private HttpStatus getStatus(HttpServletRequest request) {

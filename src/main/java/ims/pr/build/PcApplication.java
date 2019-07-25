@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @Author lyb
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "ims")
 @EnableJpaRepositories(basePackages = "ims")
 @EntityScan(basePackages = "ims")
-@EnableTransactionManagement
 public class PcApplication {
 
     public static void main(String[] args) {

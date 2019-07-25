@@ -1,6 +1,6 @@
 package ims.pr.controller;
 
-import ims.pr.pojo.TCompanyLyb;
+import ims.pr.pojo.Company;
 import ims.pr.service.OrgService;
 import ims.pr.utils.ResponseBean;
 import ims.pr.utils.TreeNode;
@@ -34,7 +34,7 @@ public class OrgController {
 
     @GetMapping("/saveOrg")
     public ResponseBean saveOrg() {
-        TCompanyLyb org = new TCompanyLyb();
+        Company org = new Company();
         org.setId(44);
         org.setParentId(1);
         org.setName("测试");

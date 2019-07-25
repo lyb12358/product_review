@@ -1,6 +1,6 @@
 package ims.pr.serviceImpl;
 
-import ims.pr.pojo.TCompanyLyb;
+import ims.pr.pojo.Company;
 import ims.pr.repository.CompanyRepo;
 import ims.pr.service.OrgService;
 import ims.pr.utils.TreeNode;
@@ -21,20 +21,20 @@ public class OrgServiceImpl implements OrgService {
 
 
     @Override
-    public void insert(TCompanyLyb org) {
+    public void insert(Company org) {
         companyRepo.save(org);
     }
 
 
     @Override
     public List<TreeNode> getOrgList() {
-        List<TCompanyLyb> list = companyRepo.findAll();
+        List<Company> list = companyRepo.findAll();
         List<TreeNode> nodes = toListNode(list);
         List<TreeNode> treeNodes = TreeNodeUtil.tree(nodes, 0);
         return treeNodes;
     }
 
-    public static TreeNode toNode(TCompanyLyb org) {
+    public static TreeNode toNode(Company org) {
         TreeNode node = new TreeNode();
         node.setId(org.getId());
         node.setParentId(org.getParentId());
@@ -48,9 +48,9 @@ public class OrgServiceImpl implements OrgService {
         return node;
     }
 
-    public static List<TreeNode> toListNode(List<TCompanyLyb> orgs) {
+    public static List<TreeNode> toListNode(List<Company> orgs) {
         List<TreeNode> nodes = new ArrayList<>();
-        for (TCompanyLyb org : orgs) {
+        for (Company org : orgs) {
             nodes.add(toNode(org));
         }
         return nodes;
