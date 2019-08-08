@@ -1,6 +1,11 @@
 server:
   port: 8080
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB # 单个文件大小
+      max-request-size: 100MB # 设置总上传的数据大小
+      enabled: true #开启
   datasource:
     hikari:
       minimum-idle: 5

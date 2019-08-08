@@ -24,6 +24,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.ArrayList;
@@ -87,21 +88,74 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public DataGridResult getUserList(UserSearchForm form) {
-        Pageable pageable = PageRequest.of(form.getPage(), form.getRow(), Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(form.getPage() - 1, form.getRow(), Sort.Direction.DESC, "id");
+        User user = new User();
         ExampleMatcher match = ExampleMatcher.matching();
         if (form.getAccount() != null && !"".equals(form.getAccount())) {
-            match.withMatcher(form.getAccount(), ExampleMatcher.GenericPropertyMatchers.contains());
+            user.setAccount(form.getAccount());
+            match = match.withMatcher("account", ExampleMatcher.GenericPropertyMatchers.contains());
         }
         if (form.getName() != null && !"".equals(form.getName())) {
-            match.withMatcher(form.getName(), ExampleMatcher.GenericPropertyMatchers.contains());
+            user.setName(form.getName());
+            match = match.withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains());
         }
-        User user = new User();
         Example<User> example = Example.of(user, match);
         Page<User> page = userRepo.findAll(example, pageable);
         DataGridResult result = new DataGridResult();
         result.setRows(page.getContent());
         result.setTotal(page.getTotalElements());
+        log.info(result.getRows() + "");
+        log.info(result.getTotal() + "");
         return result;
+    }
+
+    @Override
+    public User getUserById(Integer id) {
+        User user = userRepo.getOne(id);
+        return user;
+    }
+
+    @Override
+    @Transactional
+    public void addUser(User user) throws NormalException {
+
+        if (null == user.getId()) {
+            String ps = "111111";
+            String MD5Password = DigestUtils.md5DigestAsHex(ps.getBytes());
+            user.setPassword(MD5Password);
+            List<User> list = userRepo.findByName(user.getName());
+            if (list.size() != 0) {
+                throw new NormalException("姓名不允许重复！");
+            }
+            User user1 = userRepo.findByAccount(user.getAccount());
+            if (null != user1) {
+                throw new NormalException("账号不允许重复！");
+            }
+        } else {
+            List<User> list = userRepo.findByNameAndIdIsNot(user.getName(), user.getId());
+            if (list.size() != 0) {
+                throw new NormalException("姓名不允许重复！");
+            }
+            User user1 = userRepo.findByAccountAndIdIsNot(user.getAccount(), user.getId());
+            if (null != user1) {
+                throw new NormalException("账号不允许重复！");
+            }
+        }
+        try {
+            userRepo.save(user);
+            UserRole ur = new UserRole();
+            ur.setUserId(user.getId());
+            if (user.getType() == 1) {
+                ur.setRoleId(3);
+            } else {
+                ur.setRoleId(4);
+            }
+            userRoleRepo.deleteByUserId(user.getId());
+            userRoleRepo.save(ur);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new NormalException("操作失败");
+        }
     }
 
     // 修改密码
@@ -123,12 +177,13 @@ public class UserServiceImpl implements UserService {
     // 获取角色表
     @Override
     public DataGridResult getRoleList(UserSearchForm form) {
-        Pageable pageable = PageRequest.of(form.getPage(), form.getRow(), Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(form.getPage() - 1, form.getRow(), Sort.Direction.DESC, "id");
         ExampleMatcher match = ExampleMatcher.matching();
-        if (form.getName() != null && !"".equals(form.getName())) {
-            match.withMatcher(form.getName(), ExampleMatcher.GenericPropertyMatchers.contains());
-        }
         Role role = new Role();
+        if (form.getName() != null && !"".equals(form.getName())) {
+            role.setName(form.getName());
+            match = match.withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains());
+        }
         Example<Role> example = Example.of(role, match);
         Page<Role> page = roleRepo.findAll(example, pageable);
         DataGridResult result = new DataGridResult();

@@ -9,21 +9,23 @@ import java.util.Date;
 
 /**
  * @Author lyb
- * @create 2019-07-25 09:17
+ * @create 2019-08-01 14:30
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSearchForm implements Serializable {
-    private static final long serialVersionUID = 6807412972137910331L;
+public class ProductSearchForm implements Serializable {
+    private static final long serialVersionUID = -884530103431319421L;
     private Integer page;
     private Integer row;
-    private String account;
+    private Integer orderId;
+    private Integer speId;
+    private Integer priceZoneId;
+    private Integer reviewSeasonId;
+    private Integer middleTypeId;
+    private Integer sortFlag;
     private String name;
-    private Integer status;
-    private Integer type;
-    private Integer departId;
-    private Integer comId;
+    private String middleName;
     private Date gmtCreateStart;
     private Date gmtCreateEnd;
     private Date gmtModifiedStart;

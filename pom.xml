@@ -11,7 +11,7 @@
     <groupId>com.beyond</groupId>
     <artifactId>pr</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>pr</name>
     <description>product review</description>
 
@@ -20,6 +20,17 @@
     </properties>
 
     <dependencies>
+        <!-- imageIO plugin -->
+        <dependency>
+            <groupId>com.twelvemonkeys.imageio</groupId>
+            <artifactId>imageio-jpeg</artifactId>
+            <version>3.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twelvemonkeys.imageio</groupId>
+            <artifactId>imageio-tiff</artifactId>
+            <version>3.4.1</version>
+        </dependency>
         <!-- easypoi -->
         <dependency>
             <groupId>cn.afterturn</groupId>
@@ -43,26 +54,26 @@
             <version>3.4.0</version>
         </dependency>
         <!-- Apache工具组件 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>3.3</version>
-        </dependency>
-        <!-- 文件上传组件 -->
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.3</version>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apache.commons</groupId>-->
+        <!--<artifactId>commons-lang3</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.commons</groupId>-->
+        <!--<artifactId>commons-io</artifactId>-->
+        <!--<version>1.3.2</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>commons-net</groupId>-->
+        <!--<artifactId>commons-net</artifactId>-->
+        <!--<version>3.3</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; 文件上传组件 &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>commons-fileupload</groupId>-->
+        <!--<artifactId>commons-fileupload</artifactId>-->
+        <!--<version>1.3.3</version>-->
+        <!--</dependency>-->
         <!--springboot origin-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -25,6 +25,10 @@ public interface UserService {
     // 获取用户表
     DataGridResult getUserList(UserSearchForm form);
 
+    void addUser(User user) throws NormalException;
+
+    User getUserById(Integer id);
+
     // 修改密码
     void updatePassword(Integer id, String password) throws NormalException;
 

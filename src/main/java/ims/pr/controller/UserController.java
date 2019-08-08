@@ -65,6 +65,20 @@ public class UserController {
 
     }
 
+    // 获取用户
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public ResponseBean getUserById(@PathVariable Integer id) {
+        User user = userService.getUserById(id);
+        return new ResponseBean(20000, "操作成功", user);
+    }
+
+    // 添加/修改用户
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public ResponseBean addUser(@RequestBody User user) {
+        userService.addUser(user);
+        return new ResponseBean(20000, "操作成功", null);
+    }
+
     // role manage
     // 获取角色表
     @RequestMapping(value = "/roles", method = RequestMethod.POST)

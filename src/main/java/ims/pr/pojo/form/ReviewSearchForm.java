@@ -14,14 +14,12 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSearchForm implements Serializable {
+public class ReviewSearchForm implements Serializable {
     private static final long serialVersionUID = 6807412972137910331L;
     private Integer page;
     private Integer row;
-    private String account;
     private String name;
     private Integer status;
-    private Integer type;
     private Integer departId;
     private Integer comId;
     private Date gmtCreateStart;

@@ -21,8 +21,8 @@ import java.util.List;
 public class AuthInterceptor implements HandlerInterceptor {
 
 
-    private static List<String> uncheckUrls = Lists.newArrayList("/user/login");
-    private static List<String> uncheckUrlEnds = Lists.newArrayList(".jpg", ".png", ".woff", ".ttf");
+    private static List<String> uncheckUrls = Lists.newArrayList("/user/login", "imageUpload/product");
+    private static List<String> uncheckUrlEnds = Lists.newArrayList(".jpg", ".jpeg", ".png", ".woff", ".ttf");
 
 
     @Override

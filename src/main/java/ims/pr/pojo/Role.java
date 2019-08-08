@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ import java.util.Date;
 @Entity
 @Table(name = "t_role_lyb")
 @DynamicInsert
+@DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Role implements Serializable {
     private static final long serialVersionUID = -7604254423496766640L;

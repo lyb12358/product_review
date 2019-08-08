@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -26,6 +26,7 @@ import java.util.Date;
 @Entity
 @Table(name = "t_review_product_lyb")
 @DynamicInsert
+@DynamicUpdate
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ReviewProduct implements Serializable {
     private static final long serialVersionUID = -7604254423496766640L;
@@ -42,10 +43,10 @@ public class ReviewProduct implements Serializable {
     private Integer speId;
     private String prodMat;
     private Integer middleTypeId;
-    private BigDecimal retailPrice;
-    private BigDecimal supplePrice;
-    private BigDecimal costPrice;
-    private Integer numModel;
+    private String retailPrice;
+    private String supplyPrice;
+    private String costPrice;
+    private String numModel;
     private String prodDesc;
     private String image;
     private String thumbnail;
