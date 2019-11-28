@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
                 list.add(order1);
             }
         }
-        Sort.Order order2 = new Sort.Order(Sort.Direction.ASC, "id");
+        Sort.Order order2 = new Sort.Order(Sort.Direction.DESC, "id");
 
         list.add(order2);
         Sort sort = Sort.by(list);
@@ -132,7 +132,7 @@ public class ProductServiceImpl implements ProductService {
                 throw new NormalException("同一个评审会名称不允许重复！");
             }
             List<ReviewProduct> list1 = rpRepo.findByDevCodeAndReviewSeasonId(rp.getDevCode(), seasonId);
-            if (list.size() != 0) {
+            if (list1.size() != 0) {
                 throw new NormalException("同一个评审会研发编号不允许重复！");
             }
         } else {
@@ -141,7 +141,7 @@ public class ProductServiceImpl implements ProductService {
                 throw new NormalException("同一个评审会名称不允许重复！");
             }
             List<ReviewProduct> list1 = rpRepo.findByDevCodeAndReviewSeasonIdAndIdIsNot(rp.getDevCode(), seasonId, rp.getId());
-            if (list.size() != 0) {
+            if (list1.size() != 0) {
                 throw new NormalException("同一个评审会研发编号不允许重复！");
             }
         }

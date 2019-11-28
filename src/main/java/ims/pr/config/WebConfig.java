@@ -30,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
         if (System.getProperty("os.name").toLowerCase().indexOf("linux") >= 0) {
             registry.addResourceHandler("/image/**").addResourceLocations("file:/Users/lyb/Desktop/image/");
         } else if (System.getProperty("os.name").toLowerCase().indexOf("windows") >= 0) {
-            registry.addResourceHandler("/image/**").addResourceLocations("file:G:/image/");
+            registry.addResourceHandler("/image/**").addResourceLocations("file:E:/image/");
         } else {
             registry.addResourceHandler("/image/**").addResourceLocations("file:/Users/lyb/Desktop/image/");
         }
