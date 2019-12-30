@@ -64,14 +64,20 @@ public class ProductServiceImpl implements ProductService {
             } else if (form.getSortFlag() == 2) {
                 Sort.Order order1 = new Sort.Order(Sort.Direction.DESC, "tt");
                 list.add(order1);
-            } else {
+            } else if (form.getSortFlag() == 3) {
                 Sort.Order order1 = new Sort.Order(Sort.Direction.DESC, "dd");
                 list.add(order1);
+            } else if (form.getSortFlag() == 0) {
+                Sort.Order order1 = new Sort.Order(Sort.Direction.ASC, "orderId");
+                list.add(order1);
             }
-        }
-        Sort.Order order2 = new Sort.Order(Sort.Direction.DESC, "id");
+        } else {
+            Sort.Order order2 = new Sort.Order(Sort.Direction.DESC, "id");
 
-        list.add(order2);
+            list.add(order2);
+        }
+
+
         Sort sort = Sort.by(list);
 
         Pageable pageable = PageRequest.of(form.getPage() - 1, form.getRow(), sort);
@@ -112,7 +118,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ViewProduct> getProductByReviewSeasonId(Integer id) {
-        List<ViewProduct> list = vpRepo.findByReviewSeasonId(id);
+
+        List<ViewProduct> list = vpRepo.findByReviewSeasonId(id, Sort.by("orderId").ascending());
         return list;
     }
 

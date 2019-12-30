@@ -28,7 +28,7 @@ public class PictureController {
         if (System.getProperty("os.name").toLowerCase().indexOf("linux") >= 0) {
             return "/home/server001/imsfile";
         } else if (System.getProperty("os.name").toLowerCase().indexOf("windows") >= 0) {
-            return "G:/image";
+            return "e:/image";
         } else {
             return "/Users/lyb/Desktop/image";
         }

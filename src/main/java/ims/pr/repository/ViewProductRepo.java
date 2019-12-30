@@ -1,6 +1,7 @@
 package ims.pr.repository;
 
 import ims.pr.pojo.ViewProduct;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  */
 
 public interface ViewProductRepo extends JpaRepository<ViewProduct, Integer> {
-    List<ViewProduct> findByReviewSeasonId(Integer id);
+    List<ViewProduct> findByReviewSeasonId(Integer id, Sort sort);
 }
